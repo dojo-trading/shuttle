@@ -73,7 +73,7 @@ export class InjectiveEIP712SigningClient {
     const chainRestTendermintApi = new ChainRestTendermintApi(overrides?.rest ?? network.rest);
     const latestBlock = await chainRestTendermintApi.fetchLatestBlock();
     const latestHeight = latestBlock.header.height;
-    const timeoutHeight = new BigNumberInBase(latestHeight).plus(DEFAULT_BLOCK_TIMEOUT_HEIGHT);
+    const timeoutHeight = new BigNumberInBase(latestHeight).plus(300);
 
     const preparedMessages = prepareMessagesForInjective(messages);
     const eip712TypedData = getEip712TypedData({
