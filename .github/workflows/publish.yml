@@ -26,9 +26,9 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm --filter "@delphi-labs/*" build
+        run: pnpm --filter "@dojo-trading/*" build
 
       - name: Publish
-        run: pnpm publish --filter "@delphi-labs/*" --no-git-checks
+        run: pnpm publish --filter --access=public "@dojo-trading/*" --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
