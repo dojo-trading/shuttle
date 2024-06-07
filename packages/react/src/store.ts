@@ -1,4 +1,4 @@
-import type { WalletConnection } from "@delphi-labs/shuttle";
+import type { WalletConnection } from "@dojo-trading/shuttle";
 import { create, StateCreator } from "zustand";
 
 export type ShuttleStore = {

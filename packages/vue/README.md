@@ -25,7 +25,7 @@ npm install @delphi-labs/shuttle-vue
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
-import { createShuttle } from "@delphi-labs/shuttle-vue";
+import { createShuttle } from "@dojo-trading/shuttle-vue";
 
 import App from "./App.vue";
 
@@ -56,7 +56,7 @@ app.mount("#app");
 ```vue
 <script lang="ts" setup>
 import { ref } from "vue";
-import { WalletConnection, isAndroid, isIOS, isMobile, useShuttle } from "@delphi-labs/shuttle-vue";
+import { WalletConnection, isAndroid, isIOS, isMobile, useShuttle } from "@dojo-trading/shuttle-vue";
 import QrcodeVue from "qrcode.vue";
 
 import { useShuttlePortStore } from "@/stores/shuttle-port";

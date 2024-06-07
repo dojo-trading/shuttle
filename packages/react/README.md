@@ -22,7 +22,7 @@ npm install @delphi-labs/shuttle-react
 ### Setup
 
 ```tsx
-import { ShuttleProvider } from "@delphi-labs/shuttle-react";
+import { ShuttleProvider } from "@dojo-trading/shuttle-react";
 
 const WC_PROJECT_ID = "...";
 
@@ -55,7 +55,7 @@ function App() {
 ```tsx
 import { useState } from "react";
 import QRCode from "react-qr-code";
-import { useShuttle, isAndroid, isIOS, isMobile } from "@delphi-labs/shuttle-react";
+import { useShuttle, isAndroid, isIOS, isMobile } from "@dojo-trading/shuttle-react";
 
 const currentNetworkId = "mars-1";
 

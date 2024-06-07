@@ -12,7 +12,7 @@ import {
   SimulateResult,
   BroadcastResult,
   SigningResult,
-} from "@delphi-labs/shuttle";
+} from "@dojo-trading/shuttle";
 
 import { ShuttleStore, useShuttleStore } from "./store";
 

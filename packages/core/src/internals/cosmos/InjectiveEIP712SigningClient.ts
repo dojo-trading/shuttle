@@ -10,7 +10,7 @@ import {
   getEip712TypedData,
   ChainRestTendermintApi,
 } from "@injectivelabs/sdk-ts";
-import { BigNumberInBase, DEFAULT_BLOCK_TIMEOUT_HEIGHT } from "@injectivelabs/utils";
+import { BigNumberInBase } from "@injectivelabs/utils";
 
 import {
   type InjTransactionMsg,
