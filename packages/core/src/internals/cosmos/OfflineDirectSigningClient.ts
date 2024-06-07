@@ -4,6 +4,7 @@ import { SignDoc } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import {
   BaseAccount,
   ChainRestAuthApi,
+  ChainRestTendermintApi,
   createTransactionAndCosmosSignDoc,
   createTxRawFromSigResponse,
 } from "@injectivelabs/sdk-ts";
@@ -17,6 +18,7 @@ import { DEFAULT_CURRENCY, DEFAULT_GAS_PRICE } from "../../internals/network";
 import { isInjectiveNetwork, prepareMessagesForInjective } from "../../internals/injective";
 import { extendedRegistryTypes } from "../registry";
 import { SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate";
+import { BigNumberInBase } from "@injectivelabs/utils";
 
 export class OfflineDirectSigningClient {
   static async sign(
@@ -105,6 +107,11 @@ export class OfflineDirectSigningClient {
       };
     }
 
+    const chainRestTendermintApi = new ChainRestTendermintApi(overrides?.rest ?? network.rest);
+    const latestBlock = await chainRestTendermintApi.fetchLatestBlock();
+    const latestHeight = latestBlock.header.height;
+    const timeoutHeight = new BigNumberInBase(latestHeight).plus(750);
+
     const preparedTx = createTransactionAndCosmosSignDoc({
       pubKey: wallet.account.pubkey || "",
       chainId: network.chainId,
@@ -113,6 +120,7 @@ export class OfflineDirectSigningClient {
       sequence: baseAccount.sequence,
       accountNumber: baseAccount.accountNumber,
       memo: memo || "",
+      timeoutHeight: Number(timeoutHeight.toFixed()),
     });
 
     const directSignResponse = await offlineSigner.signDirect(
