@@ -42,7 +42,7 @@ export class BroadcastClient {
   }): Promise<BroadcastResult> {
     const client = await CosmWasmClient.connect(overrides?.rpc || network.rpc);
 
-    const broadcast = await client.broadcastTx(TxRaw.encode(signResult.response).finish(), 15000, 2500);
+    const broadcast = await client.broadcastTx(TxRaw.encode(signResult.response).finish(), 600000, 2500);
 
     return {
       hash: broadcast.transactionHash,
@@ -70,7 +70,7 @@ export class BroadcastClient {
 
     const response = await txRestApi.broadcast(txRaw, {
       mode: BroadcastMode.Sync as any,
-      timeout: 15000,
+      timeout: 600000,
     });
 
     return {
